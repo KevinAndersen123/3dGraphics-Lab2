@@ -391,6 +391,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet
       objectReference: {fileID: 0}
+    - target: {fileID: 2361305239027355219, guid: 11056a8eddbca8c448533acc8cdf87d2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Planet
+      objectReference: {fileID: 0}
     - target: {fileID: 2361305239027355221, guid: 11056a8eddbca8c448533acc8cdf87d2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -449,17 +454,17 @@ PrefabInstance:
     - target: {fileID: 2361305239027355221, guid: 11056a8eddbca8c448533acc8cdf87d2,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2361305239027355221, guid: 11056a8eddbca8c448533acc8cdf87d2,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2361305239027355220, guid: 11056a8eddbca8c448533acc8cdf87d2,
         type: 3}
       propertyPath: m_SortingLayerID
-      value: -1437431041
+      value: -153595983
       objectReference: {fileID: 0}
     - target: {fileID: 2361305239027355220, guid: 11056a8eddbca8c448533acc8cdf87d2,
         type: 3}
@@ -470,11 +475,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 6200000, guid: 0232811494daee44abd55e62eb9711ff, type: 2}
+      objectReference: {fileID: 6200000, guid: 92c5875fc7c36534394f569e8799712a, type: 2}
     - target: {fileID: 4214841490759100509, guid: 11056a8eddbca8c448533acc8cdf87d2,
         type: 3}
       propertyPath: m_Mass
-      value: 5
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114570253216750116, guid: 11056a8eddbca8c448533acc8cdf87d2,
+        type: 3}
+      propertyPath: speed
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11056a8eddbca8c448533acc8cdf87d2, type: 3}
@@ -596,7 +606,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -639,7 +649,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -546277347
+  m_SortingLayerID: -1169522859
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c00c9cb759728664290dadcb66b815d9, type: 3}
@@ -662,7 +672,7 @@ Transform:
   m_GameObject: {fileID: 1693443904}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -718,7 +728,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -323050185
+  m_SortingLayerID: -1974969195
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 17ba430a2ec108346a26057ab37aa8d4, type: 3}

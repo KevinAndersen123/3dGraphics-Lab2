@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//@Author Krystian Sarowski
+//@Author Krystian Sarowski ft. Kevin Andersen
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,7 +18,6 @@ public class PlayerController : MonoBehaviour
     bool moving = false;
 
     Rigidbody2D rb2d;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -50,5 +50,28 @@ public class PlayerController : MonoBehaviour
         {
             rb2d.AddForce(velocity * speed);
         }
+
+        //increase mass and scale of player when players size is > the planets
+        
     }
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag == "Planet")
+        {
+            if(rb2d.mass > coll.gameObject.GetComponent<Rigidbody2D>().mass)
+            {
+                rb2d.mass += coll.gameObject.GetComponent<PlanetController>().massGain;
+                transform.localScale = new Vector3(rb2d.mass, rb2d.mass, 0.0f);
+                Destroy(coll.gameObject);
+            }
+            else
+            {
+                gameObject.SetActive(false);
+            }
+        }
+    }
+
+    
 }
+

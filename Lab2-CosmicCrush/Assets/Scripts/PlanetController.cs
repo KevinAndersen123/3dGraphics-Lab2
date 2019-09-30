@@ -11,7 +11,7 @@ public class PlanetController : MonoBehaviour
     public float speed = 0.1f;
 
     public Rigidbody2D rb2d;
-
+    public float massGain = 0.1f;
     // Start is called before the first frame update
     void Start()
     {
