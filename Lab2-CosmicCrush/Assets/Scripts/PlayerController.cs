@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     //Direction and speed at which the player will travel.
     Vector3 velocity = Vector3.zero;
 
+    //The position of the mouse on screen.
     Vector3 mousePos = Vector3.zero;
 
     //Speed at which the player moves.
@@ -17,11 +18,20 @@ public class PlayerController : MonoBehaviour
     //Checks if the player is moving or not.
     bool moving = false;
 
+    //Rigidbody of the player.
     Rigidbody2D rb2d;
+
+    //Sprite Renderer of the player.
+    SpriteRenderer spriteRender;
+
     // Start is called before the first frame update
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+
+        spriteRender = GetComponent<SpriteRenderer>();
+
+        spriteRender.sprite = Resources.Load<Sprite>("Sprites/planet4");
     }
 
     // Update is called once per frame
@@ -50,8 +60,6 @@ public class PlayerController : MonoBehaviour
         {
             rb2d.AddForce(velocity * speed);
         }
-
-        //increase mass and scale of player when players size is > the planets
         
     }
 
@@ -61,9 +69,9 @@ public class PlayerController : MonoBehaviour
         {
             if(rb2d.mass > coll.gameObject.GetComponent<Rigidbody2D>().mass)
             {
-                rb2d.mass += coll.gameObject.GetComponent<PlanetController>().massGain;
-                transform.localScale = new Vector3(rb2d.mass, rb2d.mass, 0.0f);
+                MassGrowth(coll.gameObject.GetComponent<PlanetController>().massGain);
                 Destroy(coll.gameObject);
+
             }
             else
             {
@@ -72,6 +80,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Increases the players mass based on the passed in massGain.
+    //It then resizes the player to match the mass and changes the player sprite at certain mass barriers.
+    void MassGrowth(float massGain)
+    {
+        rb2d.mass += massGain;
+        transform.localScale = new Vector3(rb2d.mass, rb2d.mass, 0.0f);
+
+        if(rb2d.mass >= 0.45f && rb2d.mass < 1.0f)
+        {
+            spriteRender.sprite = Resources.Load<Sprite>("Sprites/planet3");
+        }
+
+        else if(rb2d.mass >= 1.0f && rb2d.mass < 2.0f)
+        {
+            spriteRender.sprite = Resources.Load<Sprite>("Sprites/planet2");
+        }
+
+        else if(rb2d.mass >= 2.0f)
+        {
+            spriteRender.sprite = Resources.Load<Sprite>("Sprites/planet1");
+        }
+    }
     
 }
 
