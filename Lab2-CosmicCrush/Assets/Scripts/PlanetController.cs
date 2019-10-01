@@ -10,13 +10,18 @@ public class PlanetController : MonoBehaviour
     //Speed at which the planet moves.
     public float speed = 0.1f;
 
+    //Rigidbody of the planet.
     public Rigidbody2D rb2d;
 
+    //Player object.
     public GameObject player;
 
+    //Check if the player is being attracted by the planet.
     bool isPlayerAttracted;
 
-    // Start is called before the first frame update
+    //The mass amount player will gain from eating this planet.
+    public float massGain = 0.1f;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
