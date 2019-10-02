@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//@Author Krystian Sarowski ft. Kevin Andersen
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+//@Author Krystian Sarowski and Kevin Andersen
 
 
 public class PlayerController : MonoBehaviour
@@ -17,7 +19,8 @@ public class PlayerController : MonoBehaviour
 
     //Checks if the player is moving or not.
     bool moving = false;
-
+    //game over text
+    public Text gameoverText;
     //Rigidbody of the player.
     Rigidbody2D rb2d;
 
@@ -28,7 +31,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-
+        gameoverText.text = ""; //sets gameover text to empty string
         spriteRender = GetComponent<SpriteRenderer>();
 
         spriteRender.sprite = Resources.Load<Sprite>("Sprites/planet4");
@@ -62,7 +65,7 @@ public class PlayerController : MonoBehaviour
         }
         
     }
-
+    //checks if players mass is > the planets mass if it is you grow by the planets massgain and destroy the planet
     void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "Planet")
@@ -70,12 +73,13 @@ public class PlayerController : MonoBehaviour
             if(rb2d.mass > coll.gameObject.GetComponent<Rigidbody2D>().mass)
             {
                 MassGrowth(coll.gameObject.GetComponent<PlanetController>().massGain);
-                Destroy(coll.gameObject);
-
+                Destroy(coll.gameObject); 
             }
             else
             {
                 gameObject.SetActive(false);
+               
+                gameoverText.text = "GAMEOVER!\nPress R to Restart"; //display a text gameover when you die
             }
         }
     }
@@ -100,6 +104,10 @@ public class PlayerController : MonoBehaviour
         else if(rb2d.mass >= 2.0f)
         {
             spriteRender.sprite = Resources.Load<Sprite>("Sprites/planet1");
+        }
+        if(rb2d.mass >= 3.0f)
+        {
+            gameoverText.text = "YOU WIN!\nPress R to Restart"; //once player is at its biggest mass(eaten all planets) you win
         }
     }
     
