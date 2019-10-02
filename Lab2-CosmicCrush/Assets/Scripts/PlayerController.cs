@@ -19,8 +19,15 @@ public class PlayerController : MonoBehaviour
 
     //Checks if the player is moving or not.
     bool moving = false;
-    //game over text
+
+    //Game over text
     public Text gameoverText;
+
+    //Score text.
+    public Text scoreText;
+
+    float score = 0;
+
     //Rigidbody of the player.
     Rigidbody2D rb2d;
 
@@ -91,6 +98,9 @@ public class PlayerController : MonoBehaviour
         rb2d.mass += massGain;
         transform.localScale = new Vector3(rb2d.mass, rb2d.mass, 0.0f);
 
+        score += massGain * 100;
+        scoreText.text = "Score: " + score;
+
         if(rb2d.mass >= 0.45f && rb2d.mass < 1.0f)
         {
             spriteRender.sprite = Resources.Load<Sprite>("Sprites/planet3");
@@ -105,7 +115,7 @@ public class PlayerController : MonoBehaviour
         {
             spriteRender.sprite = Resources.Load<Sprite>("Sprites/planet1");
         }
-        if(rb2d.mass >= 3.0f)
+        if(rb2d.mass >= 4.0f)
         {
             gameoverText.text = "YOU WIN!\nPress R to Restart"; //once player is at its biggest mass(eaten all planets) you win
         }
